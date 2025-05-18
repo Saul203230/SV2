@@ -34,7 +34,7 @@ else:
             modelo=random.choice(modelos),
             color=random.choice(colores),
             tipo=random.choice(tipos),
-            estado=random.choice([0, 1])
+            estado= 1
         )
 
     print(f"Se agregaron autos correctamente")
