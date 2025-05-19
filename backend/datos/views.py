@@ -764,7 +764,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 @api_view(['GET'])
 def listar_incidencias(request):
     incidencias = Incidencia.objects.all()
-    serializer = IncidenciaSerializer(incidencias, many=True)
+    serializer = IncidenciaRespoSerializer(incidencias, many=True)
     return Response(serializer.data)
 
 @api_view(['PATCH'])

@@ -89,3 +89,8 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
         token['role'] = user.rol  # Incluye el rol en el token
         return token
+    
+class IncidenciaRespoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Incidencia
+        fields = '__all__'  # Asegúrate que incluye 'respuesta'
