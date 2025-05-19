@@ -89,7 +89,7 @@ const EstacionamientoChart = () => {
     };
 
     fetchData();
-    const interval = setInterval(fetchData, 600000);
+    const interval = setInterval(fetchData, 300000);
 
     return () => clearInterval(interval);
   }, []);

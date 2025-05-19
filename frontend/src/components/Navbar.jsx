@@ -17,6 +17,7 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import ReportIcon from '@mui/icons-material/Report';
 import ArticleIcon from '@mui/icons-material/Article';
+import { Chip } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -26,12 +27,18 @@ export default function Navbar({ onLogout }) {
 
   useEffect(() => {
     const storedRole = localStorage.getItem('role');
-    console.log('Role desde localStorage:', storedRole);
     if (storedRole) {
       setRole(storedRole);
     }
 
   }, []);
+
+  const formatRole = (role) => {
+  if (role === 'adminstrativo') return 'Admin';
+  if (role === 'guardia') return 'Guardia';
+  return role;
+};
+
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -41,6 +48,18 @@ export default function Navbar({ onLogout }) {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Tablero de Gestion Estacionamiento TSJ 
           </Typography>
+          <Chip
+            label={`Acceso: ${formatRole(role)}`}
+            color="secundary"
+            variant="outlined"
+            sx={{
+              marginRight: 2,
+              backgroundColor: '#583687',   // Fondo
+              color: 'white',               // Color del texto
+              borderColor: 'white',         // Borde
+              fontWeight: 'bold'            // (Opcional) Texto más marcado
+            }}
+          />
           <Button color="inherit" onClick={onLogout}>Cerrar Sesión</Button>
         </Toolbar>
       </AppBar>
