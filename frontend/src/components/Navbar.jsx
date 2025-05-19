@@ -110,12 +110,20 @@ export default function Navbar({ onLogout }) {
            )}
 
            {role === 'administrativo' && (
+            <>
           <ListItem key="6" disablePadding>
             <ListItemButton component={Link} to="/PaginaReportes" selected={"/PaginaReportes" === location.pathname}>
               <ListItemIcon><ArticleIcon /></ListItemIcon>
               <ListItemText primary="Reportes" />
             </ListItemButton>
           </ListItem>
+          <ListItem key="7" disablePadding>
+            <ListItemButton component={Link} to="/PaginaResponderIncidencias" selected={"/PaginaResponderIncidencias" === location.pathname}>
+              <ListItemIcon><ArticleIcon /></ListItemIcon>
+              <ListItemText primary="Responder Incidencias" />
+            </ListItemButton>
+          </ListItem>
+            </>
            )}
         </Box>
       </Drawer>

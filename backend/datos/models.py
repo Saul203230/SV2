@@ -37,6 +37,7 @@ class Incidencia(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)  # Fecha y hora en que se crea la incidencia
     tipo = models.CharField(max_length=50, choices=TIPOS_INCIDENCIA)  # Tipo de incidencia
     motivo = models.TextField()  # Descripción detallada de la incidencia
+    respuesta = models.TextField(blank=True, null=True)  # <- NUEVO CAMPO
 
     def __str__(self):
         return f"Incidencia de {self.nombre_usuario} - {self.tipo}"   

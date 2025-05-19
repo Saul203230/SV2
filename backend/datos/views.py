@@ -760,4 +760,29 @@ def obtener_usuario_detalle(request, usuario_id):
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
+# -------------------------------------------INCIDENCIAS-ADIM-------------------------------------
+@api_view(['GET'])
+def listar_incidencias(request):
+    incidencias = Incidencia.objects.all()
+    serializer = IncidenciaSerializer(incidencias, many=True)
+    return Response(serializer.data)
 
+@api_view(['PATCH'])
+def responder_incidencia(request, pk):
+    try:
+        incidencia = Incidencia.objects.get(pk=pk)
+    except Incidencia.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    # ✅ Verifica si ya tiene una respuesta
+    if incidencia.respuesta:
+        return Response({'error': 'Esta incidencia ya ha sido respondida.'}, status=400)
+
+    if 'respuesta' in request.data:
+        incidencia.respuesta = request.data['respuesta']
+        incidencia.save()
+        return Response({'mensaje': 'Respuesta agregada correctamente.'}, status=200)
+
+    return Response({'error': 'No se proporcionó una respuesta.'}, status=400)
+
+# -------------------------------------------INCIDENCIAS-ADIM-------------------------------------

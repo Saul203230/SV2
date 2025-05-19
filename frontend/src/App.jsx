@@ -7,6 +7,7 @@ import PaginaUsuarios from './components/PaginaUsuarios'
 import PaginaAutos from './components/PaginaAutos'
 import PaginaIncidencias from './components/PaginaIncidencias'
 import PaginaReportes from './components/PaginaReportes'
+import PaginaResponderIncidencias from './components/PaginaResponderIncidencias'
 import Navbar from './components/Navbar'
 import Login from './components/Login';
 import Register from './components/register'
@@ -48,6 +49,7 @@ function App() {
               <Route path="/PaginaAutos" element={<PrivateRoute allowedRoles={['guardia']}> <PaginaAutos /> </PrivateRoute>} />
               <Route path="/PaginaIncidencias" element={<PrivateRoute allowedRoles={['guardia']}> <PaginaIncidencias/> </PrivateRoute>} />
               <Route path="/PaginaReportes" element={<PrivateRoute allowedRoles={['administrativo']}> <PaginaReportes/> </PrivateRoute>} />
+              <Route path="/PaginaResponderIncidencias" element={<PrivateRoute allowedRoles={['administrativo']}> <PaginaResponderIncidencias/> </PrivateRoute>} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>

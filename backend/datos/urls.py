@@ -26,6 +26,7 @@ urlpatterns = [
     path('incidencias/', views.crear_incidencia, name='crear_incidencia'),
     path('buscar-usuarios/', views.buscar_usuarios),
     path('usuario/<int:usuario_id>/', views.obtener_usuario_detalle),
-
+    path('respoincidencias/', listar_incidencias, name='listar_incidencias'),
+    path('incidencias/<int:pk>/respuesta/', responder_incidencia, name='responder_incidencia'),
 
 ]
