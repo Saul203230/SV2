@@ -139,8 +139,12 @@ CELERY_TASK_SERIALIZER = 'json'
 # Beat
 INSTALLED_APPS += ['django_celery_beat']
 
-# Usar scheduler de django-celery-beat
-CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BEAT_SCHEDULE = {
+    'ejecutar_tarea_prueba': {
+        'task': 'datos.tasks.tarea_prueba',
+        'schedule': crontab(minute='*/1'),  # Cada minuto
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
