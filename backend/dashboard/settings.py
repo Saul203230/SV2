@@ -141,8 +141,8 @@ INSTALLED_APPS += ['django_celery_beat']
 
 CELERY_BEAT_SCHEDULE = {
     'ejecutar_tarea_prueba': {
-        'task': 'datos.tasks.tarea_prueba',
-        'schedule': crontab(minute='*/1'),  # Cada minuto
+        'task': 'datos.tasks.actualizar_faltas_diarias',
+        'schedule': crontab(hour=23, minute=59),  # todos los días a las 23:59
     },
 }
 

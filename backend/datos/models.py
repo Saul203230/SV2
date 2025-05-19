@@ -17,7 +17,8 @@ class Vehiculos(models.Model):
     color = models.CharField(max_length=30)
     tipo = models.CharField(max_length=30)
     estado = models.BooleanField(default=True)
-
+    faltas = models.IntegerField(default=0)  # para contar días sin registro
+    
 class Registros(models.Model):
     usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE)
     vehiculo = models.ForeignKey(Vehiculos, on_delete=models.CASCADE)
